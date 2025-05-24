@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
 
   # machine configuration
   machines = [
-    { name: "control-plane",  ip: "192.168.56.10" },
+    { name: "server",  ip: "192.168.56.10" },
     { name: "node-0",  ip: "192.168.56.11" },
     { name: "node-1",  ip: "192.168.56.12" }
   ]
