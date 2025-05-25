@@ -23,7 +23,9 @@ Each VM is configured with:
 
 Make sure the following software is installed on your system:
 
-- [VirtualBox](https://www.virtualbox.org/) (Version 6 or newer)
+- Virtualisation:
+  - [VirtualBox](https://www.virtualbox.org/) (Version 6 or newer)
+  - KVM (needs the following linux packages: `libvirt`, `libvirt-dev` (debian based linux) or `libvirt-devel` (red hat based linux) and the vagrant plugin `vagrant-libvirt` (`vagrant plugin install vagrant-libvirt`))
 - [Vagrant](https://www.vagrantup.com/) (Version 2.2+)
 - A valid SSH keypair (`~/.ssh/id_ed25519.pub` should exist)
 
