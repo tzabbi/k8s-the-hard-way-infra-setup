@@ -1,6 +1,7 @@
 Vagrant.configure("2") do |config|
   # general configuration
   config.vm.box = "debian/bookworm64"
+  config.vagrant.plugins = "vagrant-libvirt"
   
   # load SSH-Public-Key
   ssh_key_path = File.expand_path("~/.ssh/id_ed25519.pub")
@@ -18,12 +19,10 @@ Vagrant.configure("2") do |config|
       node.vm.hostname = machine[:name]
       node.vm.network "private_network", ip: machine[:ip]
 
-      node.vm.provider "virtualbox" do |vb|
-        vb.memory = 2048
-        vb.cpus = 1
-        vb.customize ["modifyvm", :id, "--storagectl", "SATA Controller", "--portcount", 1]
-        vb.customize ["createhd", "--filename", "./#{machine[:name]}.vdi", "--size", 20480]
-        vb.customize ["storageattach", :id, "--storagectl", "SATA Controller", "--port", 0, "--device", 0, "--type", "hdd", "--medium", "./#{machine[:name]}.vdi"]
+      node.vm.provider "libvirt" do |libvirt|
+        libvirt.memory = 2048
+        libvirt.cpus = 1
+        libvirt.storage :file, :size => '20G'
       end
 
       # add SSH Key
