@@ -80,6 +80,14 @@ To destroy the environment completely:
 vagrant destroy -f
 ```
 
+## Hacks
+
+Run the following command to avoid to enter the password for root user if you run `vagrant up`:
+
+```bash
+sudo usermod -aG libvirt $(whoami)
+```
+
 ## 🚀 Next Steps
 
 You can now install go ahead and try [kubernetes-the-hard-way](https://github.com/kelseyhightower/kubernetes-the-hard-way/tree/master)
